@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// 🔐 Load PIN from file
+//  Load PIN from file
 int loadPin() {
     FILE *fp = fopen("pin.txt", "r");
     int pin;
@@ -17,7 +17,7 @@ int loadPin() {
     return pin;
 }
 
-// 💾 Save new PIN to file
+//  Save new PIN to file
 void savePin(int newPin) {
     FILE *fp = fopen("pin.txt", "w");
     if (fp == NULL) {
@@ -28,7 +28,7 @@ void savePin(int newPin) {
     fclose(fp);
 }
 
-// 💰 Load balance from file
+//  Load balance from file
 float loadBalance() {
     FILE *fp = fopen("balance.txt", "r");
     float balance = 0.0;
@@ -39,7 +39,7 @@ float loadBalance() {
     return balance;
 }
 
-// 💾 Save balance to file
+// Save balance to file
 void saveBalance(float balance) {
     FILE *fp = fopen("balance.txt", "w");
     if (fp != NULL) {
@@ -48,7 +48,7 @@ void saveBalance(float balance) {
     }
 }
 
-// 📋 Show ATM menu
+//  Show ATM menu
 void showMenu() {
     printf("\n===== ATM MENU =====\n");
     printf("1. Check Balance\n");
@@ -60,7 +60,7 @@ void showMenu() {
     printf("Enter your choice: ");
 }
 
-// 🔄 Change PIN
+//  Change PIN
 void changePin(int currentPin) {
     int oldPin, newPin, confirmPin;
 
@@ -83,7 +83,7 @@ void changePin(int currentPin) {
     }
 
     savePin(newPin);
-    printf("✅ PIN changed successfully!\n");
+    printf(" PIN changed successfully!\n");
 }
 
 int main() {
@@ -92,7 +92,7 @@ int main() {
 
     int currentPin = loadPin();
 
-    // 🔐 Login
+    //  Login
     printf("Enter your 4-digit PIN: ");
     scanf("%d", &enteredPin);
 
@@ -101,7 +101,7 @@ int main() {
         return 0;
     }
 
-    printf("✅ Login successful!\n");
+    printf(" Login successful!\n");
     balance = loadBalance();
 
     while (1) {
@@ -110,7 +110,7 @@ int main() {
 
         switch (choice) {
             case 1:
-                printf("💰 Your balance is: ₹%.2f\n", balance);
+                printf(" Your balance is: ₹%.2f\n", balance);
                 break;
 
             case 2:
@@ -119,7 +119,7 @@ int main() {
                 if (amount > 0) {
                     balance += amount;
                     saveBalance(balance);
-                    printf("✅ ₹%.2f deposited.\n", amount);
+                    printf(" ₹%.2f deposited.\n", amount);
                 } else {
                     printf("❌ Invalid amount.\n");
                 }
@@ -131,7 +131,7 @@ int main() {
                 if (amount > 0 && amount <= balance) {
                     balance -= amount;
                     saveBalance(balance);
-                    printf("✅ ₹%.2f withdrawn.\n", amount);
+                    printf(" ₹%.2f withdrawn.\n", amount);
                 } else {
                     printf("❌ Invalid or insufficient amount.\n");
                 }
@@ -143,7 +143,7 @@ int main() {
                 break;
 
             case 5:
-                printf("👋 Thank you! Exiting...\n");
+                printf(" Thank you! Exiting...\n");
                 saveBalance(balance);
                 exit(0);
 
